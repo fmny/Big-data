@@ -1,0 +1,5 @@
+#Synthese du nombre de ligne par fichier
+declaration_avantage_2021_10_26_04_00.csv: 12827723 
+declaration_convention_2021_10_26_04_00.csv: 6104295
+declaration_remuneration_2021_10_26_04_00.csv: 832649
+entreprise_2021_10_26_04_00.csv: 3649
