@@ -1,5 +1,5 @@
 # Big-data
-Programmes sur différentes BDD traitant du Big Data.
+Programmes sur différentes bases de données traitant du Big Data.
 
 Le fichier transparence santé se trouve à l'adresse suivante: 
 https://www.data.gouv.fr/fr/datasets/transparence-sante-1/
