@@ -1,6 +1,10 @@
 # Big-data
 Programmes sur différentes bases de données traitant du Big Data.
 
+
+1-Transparence santé 
+Contient la méthode utilisée pour l'importation sous R d'un fichier volumineux et certains traitements sur cette base. 
+
 Le fichier transparence santé se trouve à l'adresse suivante: 
 https://www.data.gouv.fr/fr/datasets/transparence-sante-1/
 
