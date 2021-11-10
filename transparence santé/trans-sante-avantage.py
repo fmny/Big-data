@@ -32,39 +32,78 @@ print(f'Temps d\'exécution : {elapsed2:}minutes')
 #peu différent de R
 
 
-#on ne garde que 18 colonnes sur 35 pour alleger la base et la memoire
+#on ne garde que 4 colonnes sur 35 pour alleger la base et la memoire
+#de plus ce sont les seules à traiter pour le moment
 mycolumns = ['benef_nom','benef_prenom','avant_date_signature','avant_montant_ttc'] 
 df5=df4[mycolumns]
 
-
+del df4
 
 #chercher l'année 2019
 #séparation d'une chaine de caractere
 #date=str.split(df5['avant_date_signature'][1], '/')
 
+date=df5['avant_date_signature']
 
-for i in range(0,len(df5)):
-    date[i]=str.split(df5['avant_date_signature'][i], '/')
+date_sep= date.str.split("/", n = 3, expand = True)
 
+annee=date_sep.loc[:,[2]]             
+df5['annee']=annee
 
-
-from datetime import datetime
-
-dateString = "31/12/2013"
-dateString=df5['avant_date_signature']
-dateFormatter = "%d/%m/%Y"
-datetime.strptime(dateString, dateFormatter)
-
-
+#affichage des 10 1eres lignes
+df_10=df5[0:10]
+df_10
+df_11=df_10[ (df_10['annee']== "2016") ]
+#ok
 
 
 
+df_10['avant_date_signature']=to_numeric(df_10['avant_date_signature'])
 
-annee2<-data_small$avant_date_signature
-library(tidyverse)
-annee2<-str_split(annee2, "/", simplify = TRUE)
-annee<-as.integer(annee2[,3])
-data_small<-cbind(data_small,annee)
+
+
+
+#type(df_10['annee'])
+#Out[17]: pandas.core.series.Series
+
+
+del date_sep
+del annee
+del date
+
+
+#on ne conserve que l'année 2019 et les personnels soignant 
+df6=df5[ (df5['annee']== 2019) ]
+
+
+
+df[ (df['Sex'] == 1) & (df['Age'] < 25 )]
+
+
+
+#test sur data_small_2019
+data_small2<-data_small %>% filter(annee==2019)
+nrow(data_small2)
+#1 537 320
+
+rm(data_small)
+
+#agreger des donnees de la base des avantages en 2019
+resum1<-data_small2%>%select(benef_nom,benef_prenom,avant_montant_ttc)
+
+#laborieux
+resum2<-resum1%>%group_by(benef_nom,benef_prenom) %>% summarise(total_avantage=sum(avant_montant_ttc))
+resum3<-resum2[order(-resum2$total_avantage),]
+
+#on va retirer la ligne 1 qui n a pas de nom
+resum3<-resum3[2:nrow(resum3),]
+
+resum4<-resum3 %>% filter(resum3$total_avantage>30000)
+
+#je ne sais pas pourquoi ca ne marche pas
+#resum4<-resum4 %>% dplyr::filter(resum4$total_avantage > 10000)
+
+resum4<-filter(resum3,total_avantage > 30000)
 
 
 
