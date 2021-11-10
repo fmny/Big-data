@@ -106,7 +106,7 @@ resum4<-resum3 %>% filter(resum3$total_avantage>30000)
 resum4<-filter(resum3,total_avantage > 30000)
 
 
-
+https://www.it-swarm-fr.com/fr/python/changer-le-type-de-donnees-des-colonnes-dans-les-pandas/1072113742/
 
 
 
