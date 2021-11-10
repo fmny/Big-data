@@ -20,6 +20,11 @@ path="C:/Users/Francis/R_new/transparence santé/data/declaration_avantage_2021_
 df4=pd.read_csv(path,sep=";")
 #semble plus rapide que R
 
+#attention:
+#DtypeWarning: Columns (12,13,14,24,25,26,27,28,29) have mixed 
+#types.Specify dtype option on import 
+#or set low_memory=False.
+
 #len(df4.index)
 #Out[31]: 12 827 163
 
