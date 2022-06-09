@@ -19,6 +19,7 @@ setwd("C:\\Users\\Francis\\R_new\\transparence santé")
 T1<-Sys.time()
 
 rm (list=ls())
+##install.packages("data.table")
 library(data.table)
 data<-fread("C:\\Users\\Francis\\R_new\\transparence santé\\data\\declaration_avantage_2021_10_26_04_00.csv",stringsAsFactors=TRUE)
 nrow(data)
